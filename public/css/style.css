@@ -1,0 +1,282 @@
+body {
+	background-color: #ECECEC;
+}
+
+#main {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+.main-cadastro #form_cadastro {
+	height: 578px;
+	top: calc(50% - 289px);
+}
+
+.main-escola #form_cadastro {
+	height: 456px;
+	top: calc(50% - 228px);
+}
+
+.main-professor #form_cadastro {
+	height: 752px;
+	top: calc(50% - 376px);
+}
+
+.main-login #form_cadastro {
+	height: 322px;
+	top: calc(50% - 161px);
+}
+
+#container {
+	position: absolute;
+	top: 45px;
+	left: 200px;
+	width: calc(100% - 200px);
+	padding: 15px 20px;
+	margin-bottom: 25px;
+}
+
+#cadastro {
+	background-color: #97ffd4;
+	position: absolute;
+	left: calc(50% - 500px);
+	top: calc(50% - 300px);
+	width: 1000px;
+	height: 600px;
+	-webkit-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.3);
+	border: 2px solid #008e53;
+}
+
+.height-100 {
+	height: 100%;
+}
+
+#cadastro .container .row > div:nth-child(1) {
+	border-right: 2px solid #008e53;
+}
+
+#cadastro form .form-group h3 {
+	text-align: center;
+}
+
+#cadastro form .form-group:nth-child(1) {
+	margin-top: 25px;
+}
+
+#form_cadastro {
+	width: 360px;
+	position: absolute;
+	left: calc(50% - 180px);
+}
+
+.form h3 {
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+
+.form {
+	z-index: 1;
+	background: #FFFFFF;
+	padding: 45px;
+	text-align: center;
+	-webkit-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.3);
+}
+
+.form p {
+	font-size: 16px;
+	margin: 2px;
+}
+
+.form button {
+	margin-bottom: 15px;
+}
+
+.form input,
+.form select {
+	font-family: "Roboto", sans-serif;
+	outline: 0;
+	background: #F2F2F2;
+	width: 100%;
+	border: 0;
+	margin-bottom: 15px;
+	padding: 12px;
+	font-size: 14px;
+}
+
+.form button {
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: green;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+	color: #FFF;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+}
+
+.form button:hover,
+.form button:active,
+.form button:focus {
+	background: #43A047;
+}
+
+#top_menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 45px;
+	background-color: #192734;
+	border-bottom: 2px solid #0D141B;
+	z-index: 1;
+}
+
+#top_menu h3 {
+	font-size: 17pt;
+	margin: 8px;
+	color: #90CAF9;
+}
+
+#top_menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: #192734;
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 43px;
+}
+
+#top_menu li {
+	float: right;
+}
+
+#top_menu li a {
+	display: block;
+	color: #D8D8D8;
+	text-align: center;
+	padding: 10px 16px;
+	text-decoration: none;
+}
+
+#top_menu li a:hover,
+#top_menu li a:active,
+#top_menu li a:focus {
+	background-color: #121C25;
+}
+
+#left_menu {
+	position: fixed;
+	top: 45px;
+	left: 0;
+	width: 200px;
+	height: calc(100% - 45px);
+	background-color: #192734;
+	z-index: 1;
+}
+
+#left_menu ul {
+	padding: 0;
+}
+
+#left_menu ul li {
+	position: relative;
+	list-style-type: none;
+	padding: 8px;
+	padding-left: 35px;
+	color: #D8D8D8;
+}
+
+#left_menu ul li i {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	font-size: 14pt;
+}
+
+#left_menu ul li a {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	display: block;
+	font-size: 15px;
+	color: #D8D8D8;
+}
+
+#left_menu ul li:hover,
+#left_menu ul li:active,
+#left_menu ul li:focus {
+	cursor: pointer;
+	box-shadow: inset 3px 0 0 #d89217;
+	color: #0ac1ea;
+	background-color: rgba(0, 123, 255, 0.04);
+}
+
+#left_menu ul li a:hover,
+#left_menu ul li a:active,
+#left_menu ul li a:focus {
+	text-decoration: none;
+	color: #0ac1ea;
+}
+
+#container table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 25px;
+}
+
+#container th,
+#container td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+#container tr:hover {
+	background-color:#f5f5f5;
+}
+
+#container td i.fa-trash-alt {
+	color: #EC4242;
+	margin-left: 4px;
+}
+
+#container td i.fa-edit {
+	color: #2548CA;
+	margin-right: 4px;
+}
+
+#container td i:hover {
+	cursor: pointer;
+}
+
+.btn-form {
+	font-family: "Roboto", sans-serif;
+	text-transform: capitalize;
+	outline: 0;
+	background: green;
+	width: 150px;
+	border: 0;
+	padding: 6px;
+	color: #FFF;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+}
+
+.btn-form:hover,
+.btn-form:active,
+.btn-form:focus {
+	background: #43A047;
+}
