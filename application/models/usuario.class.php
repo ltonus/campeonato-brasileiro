@@ -10,10 +10,6 @@ class Usuario extends Classe implements IClass {
 		$this->setModel(new UsuarioModel());
 	}
 
-	public function validar(Array $data): array {
-		return [];
-	}
-
 }
 
 ?>

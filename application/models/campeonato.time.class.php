@@ -10,10 +10,6 @@ class CampeonatoTime extends Classe implements IClass {
 		$this->setModel(new CampeonatoTimeModel());
 	}
 
-	public function validar(Array $data): array {
-		return [];
-	}
-
 }
 
 ?>

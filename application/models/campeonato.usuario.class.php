@@ -10,10 +10,6 @@ class CampeonatoUsuario extends Classe implements IClass {
 		$this->setModel(new CampeonatoUsuarioModel());
 	}
 
-	public function validar(Array $data): array {
-		return [];
-	}
-
 }
 
 ?>

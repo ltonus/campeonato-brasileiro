@@ -10,10 +10,6 @@ class Rodada extends Classe implements IClass {
 		$this->setModel(new RodadaModel());
 	}
 
-	public function validar(Array $data): array {
-		return [];
-	}
-
 }
 
 ?>

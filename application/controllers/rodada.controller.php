@@ -1,8 +1,10 @@
 <?php
 
 require_once('/var/www/html/campeonato-brasileiro/application/config/config.php');
+require_once(_MODELS_ . 'campeonato.class.php');
 require_once(_MODELS_ . 'campeonato.time.class.php');
 require_once(_MODELS_ . 'rodada.class.php');
+require_once(_MODELS_ . 'jogo.class.php');
 
 Auth::authenticate();
 
@@ -33,7 +35,7 @@ class RodadaController {
 		$rodadaClass = new Rodada();
 
 		if (!$rodadaClass->load(['idCampeonato' => (int) Auth::$idCampeonato], ['id'])) {
-			$times = range(1, self::$nTimes);
+			$times = range(0, self::$nTimes - 1);
 			shuffle($times);
 
 			for ($i = 0; $i < (self::$nTimes - 1); $i++) {
@@ -44,6 +46,8 @@ class RodadaController {
 				$this->rotacionarTimes($times);
 			}
 		}
+
+		$this->salvarRodadas($rodadas);
 	}
 
 	private function rotacionarTimes(Array &$times) {
@@ -59,14 +63,44 @@ class RodadaController {
 	}
 
 	private function salvarRodadas(Array $times) {
-		foreach ($times as $index => $time) {
-			$rodada = [
-				'id' => 0,
-				'idCampeonato' => Auth::$idCampeonato,
-				'numero' => $index,
-				'data' => '2019-05-05',
-				'aberta' => TRUE
-			];
+		$campeonatoClass = new Campeonato();
+		$dadosCampeonato = $campeonatoClass->load(Auth::$idCampeonato, ['data']);
+
+		$campeonatoTimeClass = new CampeonatoTime();
+		$dadosCampeonatoTime = $campeonatoTimeClass->load(['idCampeonato' => Auth::$idCampeonato], ['idTime']);
+
+		$rodadaClass = new Rodada();
+		$dataCampeonato = new DateTime($dadosCampeonato[0]['data']);
+		
+		$jogoClass = new Jogo();
+
+		$rodada = [
+			'id' => 0,
+			'idCampeonato' => Auth::$idCampeonato,
+			'aberta' => TRUE
+		];
+
+		$jogo = [
+			'id' => 0,
+			'golTimeMandante' => 0,
+			'golTimeVisitante' => 0
+		];
+
+		for ($i = 0; $i < (self::$nTimes - 1); $i++) {
+			$rodada['numero'] = $i + 1;
+			$rodada['data'] = $dataCampeonato->format('Y-m-d');
+
+			$idRodada = $rodadaClass->save($rodada);
+
+			foreach ($times[$i] as $timeMandante => $timeVisitante) {
+				$jogo['idRodada'] = $idRodada;
+				$jogo['idTimeMandante'] = $dadosCampeonatoTime[$timeMandante]['idTime'];
+				$jogo['idTimeVisitante'] = $dadosCampeonatoTime[$timeVisitante]['idTime'];
+
+				$jogoClass->save($jogo);
+			}
+
+			$dataCampeonato->add(new DateInterval('P' . ($i % 2 ? 4 : 3) . 'D'));
 		}
 	}
 

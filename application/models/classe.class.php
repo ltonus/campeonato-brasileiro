@@ -115,6 +115,10 @@ abstract class Classe {
 		return (is_string($value) ? "'" . $this->db->getConn()->real_escape_string($value) . "'" : $value);
 	}
 
+	public function validar(Array $data): array {
+		return [];
+	}
+
 }
 
 ?>
