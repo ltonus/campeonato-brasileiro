@@ -8,7 +8,7 @@ class RodadaModel extends Model {
 
 	function __construct() {
 		$this->setTable('rodada');
-		$this->setColumns(['id', 'idCampeonato', 'numero', 'data', 'aberta']);
+		$this->setColumns(['id', 'idCampeonato', 'numero', 'data', 'fechada']);
 	}
 }
 

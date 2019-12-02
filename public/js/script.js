@@ -4,10 +4,12 @@ $(function() {
 			window.location = '/campeonato-brasileiro/public/login.php';
 		});
 	});
-
-	$('#gerar_rodadas').on('click', function() {
-		$.post('/campeonato-brasileiro/application/controllers/rodada.controller.php', {'action': 'gerarRodadas'}, function() {
-
-		});
-	});
 });
+
+function showWait() {
+	$('#loading, #overlay').show();
+}
+
+function hideWait() {
+	$('#loading, #overlay').hide();
+}

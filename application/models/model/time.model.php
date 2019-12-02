@@ -8,7 +8,7 @@ class TimeModel extends Model {
 
 	function __construct() {
 		$this->setTable('classificacao');
-		$this->setColumns(['id', 'nome', 'estado', 'cidade', 'estadio', 'imagem']);
+		$this->setColumns(['id', 'nome', 'estado', 'cidade', 'estadio', 'sigla', 'imagem']);
 	}
 }
 

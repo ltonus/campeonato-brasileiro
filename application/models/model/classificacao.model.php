@@ -8,7 +8,7 @@ class ClassificacaoModel extends Model {
 
 	function __construct() {
 		$this->setTable('classificacao');
-		$this->setColumns(['id', 'idCampeonatoTime', 'saldoGolPro', 'saldoGolContra', 'saldoGol', 'numeroJogo', 'numeroVitoria', 'numeroEmpate', 'numeroDerrota']);
+		$this->setColumns(['id', 'idCampeonatoTime', 'pontuacao', 'saldoGolPro', 'saldoGolContra', 'numeroVitoria', 'numeroEmpate', 'numeroDerrota']);
 	}
 }
 

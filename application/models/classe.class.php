@@ -119,6 +119,10 @@ abstract class Classe {
 		return [];
 	}
 
+	public function getConn() {
+		return $this->db->getConn();
+	}
+
 }
 
 ?>
