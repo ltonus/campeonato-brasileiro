@@ -56,7 +56,7 @@ class Classificacao extends Classe implements IClass {
 		$rodadasGeradas = $rodadaClass->load(['idCampeonato' => Auth::$idCampeonato], ['id']);
 
 		if (!empty($rodadasGeradas)) {
-			$dadosClassificacao = $this->getConn()->query('SELECT `t`.`nome` AS `time`, `c`.`pontuacao` AS `pontuacao`, `c`.`numeroVitoria`, `c`.`numeroEmpate`, `c`.`numeroDerrota`, `c`.`saldoGolPro`, `c`.`saldoGolContra` FROM `classificacao` AS `c` JOIN `campeonato_time` AS `ct` ON `ct`.`id` = `c`.`idCampeonatoTime` JOIN `time` AS `t` ON `t`.`id` = `ct`.`idTime` WHERE `ct`.`idCampeonato` = ' . Auth::$idCampeonato . ' ORDER BY `c`.`pontuacao` DESC;');
+			$dadosClassificacao = $this->getConn()->query('SELECT `t`.`nome` AS `time`, `c`.`pontuacao` AS `pontuacao`, `c`.`numeroVitoria`, `c`.`numeroEmpate`, `c`.`numeroDerrota`, `c`.`saldoGolPro`, `c`.`saldoGolContra` FROM `classificacao` AS `c` JOIN `campeonato_time` AS `ct` ON `ct`.`id` = `c`.`idCampeonatoTime` JOIN `time` AS `t` ON `t`.`id` = `ct`.`idTime` WHERE `ct`.`idCampeonato` = ' . Auth::$idCampeonato . ' ORDER BY `c`.`pontuacao` DESC, `t`.`nome` ASC;');
 			$res['classificacoes'] = $dadosClassificacao->fetch_all(MYSQLI_ASSOC);
 
 			$dadosRodada = $rodadaClass->obterRodadaAtual();

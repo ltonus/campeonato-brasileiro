@@ -49,13 +49,17 @@ class CampeonatoBrasileiro {
 	private function showMenu() {
 		$this->verificarRodadasGeradas();
 
-		echo "-------------- MENU ------------\n";
-		echo "1 - Exibir classificação\n";
-		echo "2 - Exibir rodadas\n";
-		echo "3 - Obter rodada\n";
-		echo "4 - Atualizar placar\n";
-		echo "5 - Fechar rodada atual\n";
-		echo "6 - Logout\n";
+		printf("┌───────────────────────────┐\n");
+		printf("│             Menu          │\n");
+		printf("├───┬───────────────────────┤\n");
+		printf("│ %-2s│ %-24s│\n", '1', 'Exibir classificação');
+		printf("│ %-2s│ %-22s│\n", '2', 'Exibir rodadas');
+		printf("│ %-2s│ %-22s│\n", '3', 'Obter rodada');
+		printf("│ %-2s│ %-22s│\n", '4', 'Atualizar placar');
+		printf("│ %-2s│ %-22s│\n", '5', 'Fechar rodada atual');
+		printf("│ %-2s│ %-22s│\n", '6', 'Sair');
+		printf("└───┴───────────────────────┘\n");
+
 		echo "Escolha uma opção do menu: ";
 
 		$this->selecionarMenu();

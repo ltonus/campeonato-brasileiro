@@ -13,7 +13,7 @@ class Rodada extends Classe implements IClass {
 	}
 
 	public function obterRodadaAtual() {
-		$dadosRodada = $this->getConn()->query('SELECT MIN(`id`) AS `id`, `numero` FROM `rodada` WHERE `fechada` = 0 AND `idCampeonato` = ' . Auth::$idCampeonato)->fetch_all(MYSQLI_ASSOC);
+		$dadosRodada = $this->getConn()->query('SELECT MIN(`id`) AS `id`, `numero` FROM `rodada` WHERE `fechada` = 0 AND `idCampeonato` = ' . Auth::$idCampeonato . ' GROUP BY `numero` LIMIT 1')->fetch_all(MYSQLI_ASSOC);
 		return $dadosRodada[0];
 	}
 
@@ -145,10 +145,10 @@ class Rodada extends Classe implements IClass {
 			$dataCampeonato->add(new DateInterval('P' . ($i % 2 ? 3 : 4) . 'D'));
 		}
 
-		$this->gerarClassificacao($dadosCampeonatoTime);
+		$this->salvarClassificacao($dadosCampeonatoTime);
 	}
 
-	private function gerarClassificacao($times) {
+	private function salvarClassificacao($times) {
 		$classificacaoClass = new Classificacao();
 
 		foreach ($times as $time) {
