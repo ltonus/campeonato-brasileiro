@@ -444,12 +444,13 @@ body {
 	text-align: center;
 }
 
-#jogos_rodada .jogo-rodada input[type="number"] {
+#jogos_rodada .jogo-rodada input[type="text"] {
 	width: 50px;
 	margin: 0 20px;
 	border: 1px solid #308C32;
 	padding: 2px 5px;
 	color: #308C32;
+	text-align: center;
 }
 
 #titulo_rodada:after {

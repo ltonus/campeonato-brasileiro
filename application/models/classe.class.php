@@ -1,7 +1,7 @@
 <?php
 
 require_once(_MODELS_ . 'IClass.php');
-require_once(_MODELS_ . 'DB.php');
+require_once(_MODELS_ . 'persistent.abstraction.abstract.factory.php');
 
 abstract class Classe {
 
@@ -9,7 +9,9 @@ abstract class Classe {
 	private $model;
 
 	public function __construct() {
-		$this->db = new DB();
+		$abstractfactory = new PersistentAbstraction_AbstractFactory();
+		$factory = $abstractfactory::getFactory();
+		$this->db = $factory->createInstance();
 	}
 
 	public function setModel(Model $model): void {

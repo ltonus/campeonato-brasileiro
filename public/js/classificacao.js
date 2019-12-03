@@ -25,7 +25,7 @@ function popularTabelaClassificacao(data) {
 				$('<td>', {'text': classificacao.saldoGolPro}),
 				$('<td>', {'text': classificacao.saldoGolContra}),
 				$('<td>', {'text': classificacao.saldoGolPro - classificacao.saldoGolContra}),
-				$('<td>', {'text': (parseInt(classificacao.pontuacao) / (3 * parseInt(data.numeroRodadaAtual) - 1)).toFixed(2)})
+				$('<td>', {'text': (parseInt(classificacao.pontuacao) / (3 * parseInt(data.numeroRodadaAtual)) * 100).toFixed(2)})
 			)
 		);
 	});

@@ -7,6 +7,8 @@ define('_VIEWS_', _APPLICATION_ . 'views/');
 define('_MODELS_', _APPLICATION_ . 'models/');
 define('_MODEL_', _MODELS_ . 'model/');
 
+define('CONN_TYPE', 'mysql');
+
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'campeonato');
 define('DB_USER', 'root');

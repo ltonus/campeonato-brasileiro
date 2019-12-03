@@ -1,7 +1,7 @@
 $(function() {
 	$('#login').on('click', function() {
 		var data = {
-			'action': 'signin',
+			'action': 'signIn',
 			'login': $('#usuario').val(),
 			'senha': md5($('#senha').val())
 		};

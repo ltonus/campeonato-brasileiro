@@ -14,48 +14,28 @@ class LoginController {
 
 	public function action($action) {
 		switch ($action) {
-			case 'signin':
-				$this->signin();
+			case 'signIn':
+				$this->signIn();
 				break;
-			case 'signout':
-				$this->signout();
-				break;
-			case 'authenticate':
-				$this->authenticate();
+			case 'signOut':
+				$this->signOut();
 				break;
 		}
 	}
 
-	private function signin() {
-		$res = [];
-
+	private function signIn() {
 		$usuarioClass = new Usuario();
-		$dadosUsuario = $usuarioClass->load([
+		$res = $usuarioClass->signIn([
 			'login' => $_POST['login'],
 			'senha' => $_POST['senha']
-		], ['id', 'nome']);
-
-		if ($dadosUsuario) {
-			session_start();
-
-			$campeonatoUsuarioClass = new CampeonatoUsuario();
-			$dadosCampeonatoUsuario = $campeonatoUsuarioClass->load(['idUsuario' => $dadosUsuario[0]['id']], ['idCampeonato']);
-
-			$_SESSION['loggedin'] = true;
-			$_SESSION['idUsuario'] = $dadosUsuario[0]['id'];
-			$_SESSION['nome'] = $dadosUsuario[0]['nome'];
-			$_SESSION['idCampeonato'] = $dadosCampeonatoUsuario[0]['idCampeonato'];
-		} else {
-			$res[] = 'Login ou senha incorreta!';
-		}
+		]);
 
 		echo json_encode($res);
 	}
 
-	private function signout() {
-		session_start();
-		$_SESSION = [];
-		session_destroy();
+	private function signOut() {
+		$usuarioClass = new Usuario();
+		$usuarioClass->signOut();
 	}
 
 }

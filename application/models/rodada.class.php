@@ -23,7 +23,7 @@ class Rodada extends Classe implements IClass {
 
 	public function obter($id) {
 		$res = [];
-		$dadosRodada = $this->load(['id' => $id, 'idCampeonato' => Auth::$idCampeonato], ['data', 'fechada']);
+		$dadosRodada = $this->load(['id' => $id, 'idCampeonato' => Auth::$idCampeonato], ['data', 'numero', 'fechada']);
 
 		if ($dadosRodada) {
 			$dadosJogos = $this->getConn()->query('SELECT `j`.`id` as `idJogo`, `tm`.`sigla` as `siglaTimeMandante`, `tv`.`sigla` as `siglaTimeVisitante`, `tm`.`nome` as `nomeTimeMandante`, `tv`.`nome` as `nomeTimeVisitante`, `tm`.`imagem` as `imagemTimeMandante`, `tv`.`imagem` as `imagemTimeVisitante`, `j`.`golTimeMandante`, `j`.`golTimeVisitante`, `tm`.`estadio` FROM `rodada` AS `r` JOIN `jogo` AS `j` ON `j`.`idRodada` = `r`.`id` JOIN `time` AS `tm` ON `tm`.`id` = `j`.`idTimeMandante` JOIN `time` AS `tv` ON `tv`.`id` = `j`.`idTimeVisitante` WHERE `r`.`idCampeonato` = ' . Auth::$idCampeonato . ' AND `r`.`id` = ' . $id)->fetch_all(MYSQLI_ASSOC);

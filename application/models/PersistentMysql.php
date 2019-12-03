@@ -1,6 +1,6 @@
 <?php
 
-class DB {
+class PersistentMysql {
 
 	private $conn;
 

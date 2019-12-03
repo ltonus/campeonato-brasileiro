@@ -38,6 +38,12 @@ $(function() {
 	$(document).on('click', '#fechar_rodada', function() {
 		fecharRodada();
 	});
+
+	$(document).on('blur', '.div-jogo input', function() {
+		if (!$(this).val()) {
+			$(this).val('0');
+		}
+	});
 });
 
 function verificarRodadasGeradas() {
@@ -81,27 +87,37 @@ function obterRodada(idRodada) {
 
 		var rodadaAtual = parseInt($('.n-rodada.atual').attr('data-id')) == idRodada;
 
-		$.each(data.jogos, function(i, jogo) {
+		$.each(data.jogos, function() {
 			$('#jogos_rodada').append(
-				$('<div>', {'class': 'jogo-rodada', 'data-id': jogo.idJogo}).append(
-					$('<span>', {'html': '<strong>' + data.rodada.data + '<strong> ' + jogo.estadio}),
+				$('<div>', {'class': 'jogo-rodada', 'data-id': this.idJogo}).append(
+					$('<span>', {'html': '<strong>' + data.rodada.data + '<strong> ' + this.estadio}),
 					$('<div>', {'class': 'div-jogo'}).append(
 						$('<div>', {'class': 'time-mandante'}).append(
-							$('<span>', {'class': 'time-sigla', 'text': jogo.siglaTimeMandante}),
-							$('<img>', {'class': 'img-time', 'src': jogo.imagemTimeMandante, 'title': jogo.nomeTimeMandante}),
-							$('<input>', {'type': 'number', 'min': '0', 'value': jogo.golTimeMandante, 'disabled': !rodadaAtual})
+							$('<span>', {'class': 'time-sigla', 'text': this.siglaTimeMandante}),
+							$('<img>', {'class': 'img-time', 'src': this.imagemTimeMandante, 'title': this.nomeTimeMandante}),
+							$('<input>', {'type': 'text', 'value': this.golTimeMandante, 'disabled': !rodadaAtual})
 						),
 						$('<div>', {'class': 'time-vs'}).append(
 							$('<i>', {'class': 'fas fa-times'})
 						),
 						$('<div>', {'class': 'time-visitante'}).append(
-							$('<input>', {'type': 'number', 'min': '0', 'value': jogo.golTimeVisitante, 'disabled': !rodadaAtual}),
-							$('<img>', {'class': 'img-time', 'src': jogo.imagemTimeVisitante, 'title': jogo.nomeTimeVisitante}),
-							$('<span>', {'class': 'time-sigla', 'text': jogo.siglaTimeVisitante})
+							$('<input>', {'type': 'text', 'value': this.golTimeVisitante, 'disabled': !rodadaAtual}),
+							$('<img>', {'class': 'img-time', 'src': this.imagemTimeVisitante, 'title': this.nomeTimeVisitante}),
+							$('<span>', {'class': 'time-sigla', 'text': this.siglaTimeVisitante})
 						)
 					)
 				)
 			);
+		});
+
+		$('#jogos_rodada .div-jogo input').mask('0#', {
+			'selectOnFocus': true,
+			'translation': {
+				'#': {
+					'pattern': /[0-9]/,
+					'optional': true
+				}
+			}
 		});
 
 		$('#titulo_rodada').attr('data-numero', $('.n-rodada.selecionada').text());
